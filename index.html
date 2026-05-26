@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智造晒晒谁 - 聚焦全球智能制造动态，连接湾区产业生态</title>
+    <meta name="description" content="智造晒晒谁 - 粤港澳大湾区智能制造产业信息平台，提供每日智造头条、产业图谱、数据中心、供需对接服务">
+    <meta name="keywords" content="智能制造,工业4.0,粤港澳大湾区,人形机器人,工业互联网,AI+制造">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        /* 顶部Banner */
+        .banner {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 主标题区 */
+        .hero {
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #027dc7;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 二维码区域 */
+        .qrcode-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 0 auto 50px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .qrcode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .qrcode-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 16px;
+            background: #f8fafc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .qrcode-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(2, 125, 199, 0.15);
+        }
+
+        .qrcode-card h3 {
+            font-size: 20px;
+            color: #027dc7;
+            margin-bottom: 8px;
+        }
+
+        .qrcode-card .desc {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .qrcode-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .scan-tip {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* 内容板块通用样式 */
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #027dc7;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e0f2fe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        /* 最新资讯 */
+        .news-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .news-item {
+            padding: 18px 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 3px solid #027dc7;
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            background: #f0f9ff;
+            transform: translateX(6px);
+        }
+
+        .news-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .news-date {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 核心数据 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 28px 20px;
+            background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 16px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #027dc7;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* 核心服务 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            padding: 28px;
+            background: #f8fafc;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            background: #f0f9ff;
+            transform: translateY(-4px);
+            border-color: #027dc7;
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 页脚 */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #60a5fa;
+        }
+
+        .copyright {
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .qrcode-section {
+                padding: 30px 20px;
+            }
+
+            .content-section {
+                padding: 24px 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部Banner形象页 -->
+    <img src="banner.jpg" class="banner" alt="智造晒晒谁">
+
+    <div class="container">
+        <!-- 主标题 -->
+        <section class="hero">
+            <h1>粤港澳大湾区智能制造产业信息平台</h1>
+            <p>聚焦全球智造动态 · 连接湾区产业生态</p>
+        </section>
+
+        <!-- 二维码引流区 -->
+        <section class="qrcode-section">
+            <div class="qrcode-grid">
+                <div class="qrcode-card">
+                    <h3>📰 微信公众号</h3>
+                    <p class="desc">关注获取每日智造头条</p>
+                    <img src="gzh-qrcode.jpg" class="qrcode-img" alt="公众号二维码">
+                    <p class="scan-tip">微信扫码关注</p>
+                </div>
+
+                <div class="qrcode-card">
+                    <h3>📱 微信小程序</h3>
+                    <p class="desc">进入浏览完整产业数据库</p>
+                    <img src="xcx-qrcode.jpg" class="qrcode-img" alt="小程序码">
+                    <p class="scan-tip">微信扫码进入</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最新资讯 -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <span>📰</span>
+                最新资讯
+            </h2>
+            <div class="news-grid">
+                <div class="news-item">
+                    <div class="news-title">华为发布"韬(τ)定律"，定义中国半导体产业发展新原则</div>
+                    <div class="news-date">2026年5月26日</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">山东印发AI+制造三年行动方案，2028年目标规模2500亿</div>
+                    <div class="news-date">2026年5月25日</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">宇树科技冲刺"人形机器人第一股"，科创板上市申请获受理</div>
+                    <div class="news-date">2026年5月25日</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心数据 -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <span>📊</span>
+                核心数据
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">53</div>
+                    <div class="stat-label">广东"十五五"重点赛道</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10万亿</div>
+                    <div class="stat-label">2035年湾区智造目标</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1000亿</div>
+                    <div class="stat-label">广东战新引导基金规模</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">工业门类全覆盖</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心服务 -->
+        <section class="content-section">
+            <h2 class="section-title">
+                <span>🎯</span>
+                核心服务
+            </h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📰</div>
+                    <div class="feature-title">每日智造头条</div>
+                    <div class="feature-desc">每天精选7大板块智能制造行业资讯，权威来源、数据驱动</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <div class="feature-title">产业图谱</div>
+                    <div class="feature-desc">粤港澳大湾区智能制造产业布局全景图，企业、园区、政策一网打尽</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">数据中心</div>
+                    <div class="feature-desc">行业核心指标、市场规模、投融资数据实时更新，助力决策</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <div class="feature-title">供需对接</div>
+                    <div class="feature-desc">连接制造企业与服务商，促进技术、产品、人才精准匹配</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🏭 智造晒晒谁</div>
+            <div class="copyright">© 2026 智造晒晒谁 · 湾区智造产业信息平台</div>
+        </div>
+    </footer>
+</body>
+</html>
